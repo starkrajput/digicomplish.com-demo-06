@@ -1,0 +1,122 @@
+/* --- Widgets --- */
+[data-elementor-device-mode="mobile"] .elementor-widget-archive-posts.vamtam-has-theme-widget-styles[data-widget_type="posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-mobile,
+[data-elementor-device-mode="mobile"] .elementor-widget-archive-posts.vamtam-has-theme-widget-styles[data-widget_type="archive-posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-mobile {
+  display: none;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post {
+  display: block;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post__thumbnail__link {
+  margin-bottom: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post__text {
+  width: 100%;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-left .elementor-post__thumbnail__link {
+  margin-right: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-right .elementor-post__thumbnail__link {
+  margin-left: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-center .elementor-post__thumbnail__link {
+  margin-right: auto;
+  margin-left: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post {
+  display: flex;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post .elementor-post__thumbnail__link,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post .elementor-post__thumbnail__link {
+  margin-bottom: 0;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post__thumbnail__link,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post__thumbnail__link {
+  flex-shrink: 0;
+  width: 25%;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post__thumbnail__link {
+  order: 0;
+  margin-left: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post__thumbnail__link {
+  order: 5;
+  margin-right: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-none .elementor-posts-container .elementor-post__thumbnail__link {
+  display: none;
+}
+.elementor-widget-form.vamtam-has-theme-widget-styles.vamtam-booking-form .e-form__indicators__indicator {
+  flex-basis: auto;
+  flex-direction: column;
+}
+.elementor-widget-form.vamtam-has-theme-widget-styles.vamtam-booking-form .e-form__indicators__indicator__number {
+  margin-bottom: 5px;
+  margin-right: 0px;
+}
+.elementor-widget-form.vamtam-has-theme-widget-styles.vamtam-booking-form .elementor-field-group .elementor-field-label {
+  max-width: 100%;
+}
+.elementor-widget-form.vamtam-has-theme-widget-styles.vamtam-booking-form .elementor-field-subgroup.elementor-subgroup-inline .elementor-field-option {
+  width: 100%;
+}
+.elementor-widget-post-comments.vamtam-has-theme-widget-styles #commentform .form-submit {
+  margin: 0 !important;
+}
+.elementor-widget-post-comments.vamtam-has-theme-widget-styles .comments .comment-author {
+  display: none;
+}
+[data-elementor-device-mode="mobile"] .elementor-widget-posts.vamtam-has-theme-widget-styles[data-widget_type="posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-mobile,
+[data-elementor-device-mode="mobile"] .elementor-widget-posts.vamtam-has-theme-widget-styles[data-widget_type="archive-posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-mobile {
+  display: none;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post {
+  display: block;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post__thumbnail__link {
+  margin-bottom: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top .elementor-post__text {
+  width: 100%;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-left .elementor-post__thumbnail__link {
+  margin-right: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-right .elementor-post__thumbnail__link {
+  margin-left: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-top.elementor-posts--align-center .elementor-post__thumbnail__link {
+  margin-right: auto;
+  margin-left: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post {
+  display: flex;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post .elementor-post__thumbnail__link,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post .elementor-post__thumbnail__link {
+  margin-bottom: 0;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post__thumbnail__link,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post__thumbnail__link {
+  flex-shrink: 0;
+  width: 25%;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-left .elementor-post__thumbnail__link {
+  order: 0;
+  margin-left: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-right .elementor-post__thumbnail__link {
+  order: 5;
+  margin-right: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-mobile-none .elementor-posts-container .elementor-post__thumbnail__link {
+  display: none;
+}
+.elementor-section.elementor-element {
+  padding: 0 20px;
+}
+.vamtam-is-wishlist .page-template-default .meta-header-inside {
+  padding: var(--vamtam-content-space-l) 0;
+}
+/*# sourceMappingURL=elementor-small.css.map */

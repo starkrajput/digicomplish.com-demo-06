@@ -1,0 +1,120 @@
+body.responsive-layout #scroll-to-top {
+  bottom: 20px;
+}
+body.responsive-layout .page-wrapper {
+  flex-direction: column;
+}
+.woocommerce-demo-store .demo_store .woocommerce-store-notice__dismiss-link::before {
+  position: absolute;
+  right: 20px;
+}
+/* --- Widgets --- */
+[data-elementor-device-mode="tablet"] .elementor-widget-archive-posts.vamtam-has-theme-widget-styles[data-widget_type="posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-tablet,
+[data-elementor-device-mode="tablet"] .elementor-widget-archive-posts.vamtam-has-theme-widget-styles[data-widget_type="archive-posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-tablet {
+  display: none;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post {
+  display: block;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post__thumbnail__link {
+  margin-bottom: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post__text {
+  width: 100%;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-left .elementor-post__thumbnail__link {
+  margin-right: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-right .elementor-post__thumbnail__link {
+  margin-left: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-center .elementor-post__thumbnail__link {
+  margin-right: auto;
+  margin-left: auto;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post {
+  display: flex;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post .elementor-post__thumbnail__link,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post .elementor-post__thumbnail__link {
+  margin-bottom: 0;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post__thumbnail__link,
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post__thumbnail__link {
+  flex-shrink: 0;
+  width: 25%;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post__thumbnail__link {
+  order: 0;
+  margin-left: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post__thumbnail__link {
+  order: 5;
+  margin-right: 20px;
+}
+.elementor-widget-archive-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-none .elementor-posts-container .elementor-post__thumbnail__link {
+  display: none;
+}
+.elementor-widget-nav-menu.vamtam-has-theme-widget-styles.vamtam-mb-submenu-indicator .menu-item a.has-submenu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.elementor-widget-nav-menu.vamtam-has-theme-widget-styles.vamtam-has-mobile-disable-scroll nav.elementor-nav-menu--dropdown {
+  overflow-y: auto;
+}
+.elementor-widget-nav-menu.vamtam-has-theme-widget-styles.vamtam-has-mobile-menu-max-height nav.elementor-nav-menu--dropdown > ul {
+  max-height: calc(var(--vamtam-mobile-menu-max-height, 80vh) - var(--wp-admin--admin-bar--height, 0px));
+}
+[data-elementor-device-mode="tablet"] .elementor-widget-posts.vamtam-has-theme-widget-styles[data-widget_type="posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-tablet,
+[data-elementor-device-mode="tablet"] .elementor-widget-posts.vamtam-has-theme-widget-styles[data-widget_type="archive-posts.vamtam_classic"]:not(.elementor-element-edit-mode).elementor-hidden-tablet {
+  display: none;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post {
+  display: block;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post__thumbnail__link {
+  margin-bottom: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top .elementor-post__text {
+  width: 100%;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-left .elementor-post__thumbnail__link {
+  margin-right: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-right .elementor-post__thumbnail__link {
+  margin-left: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-top.elementor-posts--align-center .elementor-post__thumbnail__link {
+  margin-right: auto;
+  margin-left: auto;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post {
+  display: flex;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post .elementor-post__thumbnail__link,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post .elementor-post__thumbnail__link {
+  margin-bottom: 0;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post__thumbnail__link,
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post__thumbnail__link {
+  flex-shrink: 0;
+  width: 25%;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-left .elementor-post__thumbnail__link {
+  order: 0;
+  margin-left: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-right .elementor-post__thumbnail__link {
+  order: 5;
+  margin-right: 20px;
+}
+.elementor-widget-posts.vamtam-has-theme-widget-styles.elementor-posts--thumbnail-tablet-none .elementor-posts-container .elementor-post__thumbnail__link {
+  display: none;
+}
+.elementor-widget-woocommerce-checkout-page.vamtam-has-theme-widget-styles .woocommerce-checkout :is(.form-row-first, .form-row-last) {
+  float: none !important;
+}
+/*# sourceMappingURL=elementor-below-max.css.map */
