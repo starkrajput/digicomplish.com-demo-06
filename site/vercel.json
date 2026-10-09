@@ -1,5 +1,66 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "trailingSlash": false,
-  "cleanUrls": false
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/services.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services/talent-fulfillment-solutions",
+      "destination": "/services/workforce/",
+      "permanent": true
+    },
+    {
+      "source": "/talent-fulfillment-solutions.html",
+      "destination": "/services/workforce/",
+      "permanent": true
+    },
+    {
+      "source": "/services/digital-excellence",
+      "destination": "/services/technology/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-excellence.html",
+      "destination": "/services/technology/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-increase-your-youtube-subscribers.html",
+      "destination": "/insights.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-get-the-most-out-of-your-press-release.html",
+      "destination": "/insights.html",
+      "permanent": true
+    },
+    {
+      "source": "/tips-for-remotely-managing-a-team.html",
+      "destination": "/insights.html",
+      "permanent": true
+    },
+    {
+      "source": "/industries",
+      "destination": "/index.html#industries",
+      "permanent": true
+    },
+    {
+      "source": "/services/talent-fulfillment-solutions/",
+      "destination": "/services/workforce/",
+      "permanent": true
+    },
+    {
+      "source": "/services/digital-excellence/",
+      "destination": "/services/technology/",
+      "permanent": true
+    },
+    {
+      "source": "/industries/",
+      "destination": "/index.html#industries",
+      "permanent": true
+    }
+  ]
 }

@@ -346,7 +346,10 @@
     $('.elementor-widget-nav-menu').each(function () {
       var settings = {};
       try { settings = JSON.parse(this.getAttribute('data-settings') || '{}'); } catch (e) {}
-      var icon = (settings.submenu_icon && settings.submenu_icon.value) || '';
+      // Font Awesome's caret renders as an empty box here, so use an inline chevron.
+      var icon = (settings.submenu_icon && settings.submenu_icon.value)
+        ? '<svg class="dcs-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : '';
       $(this).find('ul.elementor-nav-menu').each(function () {
         var $menu = $(this);
         if ($menu.data('smartmenus')) return;                // Elementor got there first
@@ -356,10 +359,183 @@
           subIndicatorsPos: 'append',
           subMenusMaxWidth: '1000px'
         });
+        bindToggle($menu.closest('.elementor-widget-nav-menu')[0]);
       });
     });
+  }
+  // Mobile burger toggle (also lives in the missing chunk): open/close the
+  // dropdown and stretch it to the full page width, as Elementor does.
+  function bindToggle(widget) {
+    if (!widget || widget.dcsToggle) return;
+    var toggle = widget.querySelector('.elementor-menu-toggle');
+    var dd = widget.querySelector('nav.elementor-nav-menu--dropdown');
+    if (!toggle || !dd) return;
+    widget.dcsToggle = true;
+    function stretch() {
+      var w = document.documentElement.clientWidth;
+      dd.style.width = w + 'px';
+      dd.style.left = '0px';
+      dd.style.left = -dd.getBoundingClientRect().left + 'px';
+    }
+    function set(open) {
+      toggle.classList.toggle('elementor-active', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      dd.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (open) stretch();
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      set(!toggle.classList.contains('elementor-active'));
+    });
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(!toggle.classList.contains('elementor-active')); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.classList.contains('elementor-active')) { set(false); toggle.focus(); }
+    });
+    window.addEventListener('resize', function () { if (toggle.classList.contains('elementor-active')) stretch(); }, { passive: true });
   }
   function later() { setTimeout(initMenus, 600); }
   if (document.readyState === 'complete') later();
   else window.addEventListener('load', later);
+})();
+
+
+/* ---------- Services mega menu: keyboard + screen-reader state ----------
+   Hover is handled by smartmenus. This adds: open on focus (Tab), close on
+   Escape (focus returns to "Services"), and aria-expanded on the trigger. */
+(function () {
+  function init() {
+    [].forEach.call(document.querySelectorAll('header li.dcs-services-item'), function (li) {
+      var trigger = li.querySelector(':scope > a');
+      var panel = li.querySelector(':scope > ul.digi-mega-services');
+      if (!trigger || !panel) return;
+      trigger.setAttribute('aria-haspopup', 'true');
+      if (!panel.id) panel.id = 'dcs-mega-' + Math.random().toString(36).slice(2, 8);
+      trigger.setAttribute('aria-controls', panel.id);
+      function sync() {
+        var open = getComputedStyle(panel).display !== 'none';
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      sync();
+      try { new MutationObserver(sync).observe(panel, { attributes: true, attributeFilter: ['style', 'class'] }); } catch (e) {}
+      li.addEventListener('focusin', function () {
+        if (window.innerWidth > 1024 && !li.dcsSuppress) { li.classList.add('dcs-open'); sync(); }
+      });
+      li.addEventListener('focusout', function (e) {
+        if (!li.contains(e.relatedTarget)) { li.classList.remove('dcs-open'); li.dcsSuppress = false; sync(); }
+      });
+      li.addEventListener('mouseleave', function () { li.classList.remove('dcs-open'); setTimeout(sync, 400); });
+      li.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        li.classList.remove('dcs-open');
+        li.dcsSuppress = true;
+        if (window.jQuery) { try { jQuery(li).closest('ul.elementor-nav-menu').smartmenus('menuHideAll'); } catch (x) {} }
+        panel.style.display = 'none';
+        trigger.focus();
+        sync();
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+
+/* ---------- Shared "Talk to an Expert" form (closing call to action) ----------
+   One form serves both buttons: "?request=briefing" (or a data-request link)
+   fills the hidden "request" field. Validates in text next to each field,
+   honeypot for spam, posts to data-endpoint when one is configured. */
+(function () {
+  var MSG = {
+    name: 'Enter your name.',
+    email: 'Enter your work email.',
+    emailBad: 'Enter a valid email address, for example name@company.com.',
+    company: 'Enter your company name.',
+    need: 'Tell us what you need.'
+  };
+
+  function setRequest(form, value) {
+    var f = form.querySelector('input[name="request"]');
+    if (f) f.value = value === 'briefing' ? 'briefing' : 'expert';
+  }
+
+  function showErr(input, text) {
+    var err = document.getElementById(input.id + '-err');
+    input.setAttribute('aria-invalid', text ? 'true' : 'false');
+    if (!err) return;
+    err.textContent = text || '';
+    err.hidden = !text;
+  }
+
+  function validate(form) {
+    var first = null;
+    ['name', 'email', 'company', 'need'].forEach(function (n) {
+      var el = form.elements[n];
+      if (!el) return;
+      var v = (el.value || '').trim(), msg = '';
+      if (!v) msg = MSG[n];
+      else if (n === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg = MSG.emailBad;
+      showErr(el, msg);
+      if (msg && !first) first = el;
+    });
+    return first;
+  }
+
+  function done(form) {
+    var box = form.parentNode.querySelector('.dcs-success');
+    form.hidden = true;
+    if (box) { box.hidden = false; box.focus(); }
+    if (window.dataLayer) {
+      window.dataLayer.push({ event: 'form_submit', form_id: 'talk_to_expert', request_type: form.elements.request.value });
+    }
+  }
+
+  function init() {
+    var forms = document.querySelectorAll('form.dcs-form');
+    if (!forms.length) return;
+    var q = new URLSearchParams(location.search).get('request');
+    [].forEach.call(forms, function (form) {
+      setRequest(form, q);
+      [].forEach.call(form.querySelectorAll('input[required], textarea[required]'), function (el) {
+        el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') validate(form); });
+      });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var status = form.querySelector('.dcs-form-status');
+        if (status) status.hidden = true;
+        var bad = validate(form);
+        if (bad) { bad.focus(); return; }
+        if (form.elements.website && form.elements.website.value) { done(form); return; }   // honeypot
+        var endpoint = form.getAttribute('data-endpoint');
+        if (!endpoint) { done(form); return; }                                               // delivery not configured yet
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); done(form); })
+          .catch(function () {
+            btn.disabled = false;
+            if (status) { status.textContent = 'Your request could not be sent. Please try again.'; status.hidden = false; }
+          });
+      });
+    });
+    // Same-page buttons: record which one was used, then move focus into the form.
+    [].forEach.call(document.querySelectorAll('a[data-request][href*="#talk"]'), function (a) {
+      a.addEventListener('click', function (e) {
+        var form = document.querySelector('form.dcs-form');
+        if (!form) return;
+        e.preventDefault();
+        var type = a.getAttribute('data-request');
+        setRequest(form, type);
+        try {
+          var u = new URL(location.href);
+          if (type === 'briefing') u.searchParams.set('request', 'briefing'); else u.searchParams.delete('request');
+          u.hash = 'talk';
+          history.replaceState(null, '', u);
+        } catch (x) {}
+        var cta = document.getElementById('talk');
+        if (cta) cta.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        setTimeout(function () { form.elements.name.focus({ preventScroll: true }); }, 450);
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
