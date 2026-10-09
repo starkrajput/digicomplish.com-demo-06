@@ -2088,3 +2088,13 @@ header ul.digi-mega-services .dcs-mstrip a{ flex:0 0 auto !important; width:auto
 .dcs .dcs-links a{ display:block !important; min-height:30px; padding:5px 0 5px 16px !important; box-sizing:border-box; }
 .dcs .dcs-crumbs a, .dcs .dcs-crumbs span{ display:inline-block; padding:4px 0; }
 .sub-arrow .dcs-caret{ display:inline-block; vertical-align:middle; }
+/* Contact world map: pins re-placed on the real geography of worldmap-bg.jpg
+   (3:2 image cover-fitted into a 2:1 box). Delhi + Ahmedabad sit close
+   together, so Ahmedabad's label hangs below its pin. */
+.dc-pin-below .dc-pin-label{ bottom:auto; top:26px; }
+.dc-pin-below .dc-pin-label::after{ bottom:auto; top:-5px; }
+/* Contact: info card + form stack on tablet/phone (inline style forced 2 columns) */
+@media (max-width:960px){
+  .digi-wrap.dc-contact-grid{ grid-template-columns:1fr !important; gap:28px !important; }
+  .dc-contact-grid .digi-row{ grid-template-columns:1fr !important; }
+}
