@@ -333,3 +333,33 @@
     if (document.body) run(); else document.addEventListener('DOMContentLoaded', run);
   } catch (e) { /* no-op */ }
 })();
+
+/* ---------- Nav-menu fallback ----------
+   Elementor Pro lazy-loads its nav-menu handler (which starts smartmenus, the
+   hover-dropdown engine) from the original theme host. Those hashed chunks now
+   404 there, so dropdowns never open. If a menu is still uninitialised after
+   load, start smartmenus ourselves with Elementor's own options. */
+(function () {
+  function initMenus() {
+    var $ = window.jQuery;
+    if (!$ || !$.fn.smartmenus) return;
+    $('.elementor-widget-nav-menu').each(function () {
+      var settings = {};
+      try { settings = JSON.parse(this.getAttribute('data-settings') || '{}'); } catch (e) {}
+      var icon = (settings.submenu_icon && settings.submenu_icon.value) || '';
+      $(this).find('ul.elementor-nav-menu').each(function () {
+        var $menu = $(this);
+        if ($menu.data('smartmenus')) return;                // Elementor got there first
+        $menu.smartmenus({
+          subIndicators: icon !== '',
+          subIndicatorsText: icon,
+          subIndicatorsPos: 'append',
+          subMenusMaxWidth: '1000px'
+        });
+      });
+    });
+  }
+  function later() { setTimeout(initMenus, 600); }
+  if (document.readyState === 'complete') later();
+  else window.addEventListener('load', later);
+})();
